@@ -68,6 +68,7 @@ public class Cart implements Serializable {
 	public void save() throws IOException {
 		ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("cart.ser"));
 		stream.writeObject(this);
+		stream.close();
 	}
 	
 	public String getSqlInsertRequest() {
