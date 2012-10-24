@@ -1,4 +1,4 @@
-package com.kelkoo.agile.step1.collaborators;
+package com.kelkoo.agile.solution1;
 
 import java.io.Serializable;
 

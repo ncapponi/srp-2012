@@ -1,4 +1,4 @@
-package com.kelkoo.agile.step1.collaborators;
+package com.kelkoo.agile.step1.start;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.is;
@@ -13,6 +13,10 @@ import java.util.Date;
 
 import org.hamcrest.core.Is;
 import org.junit.Test;
+
+import com.kelkoo.agile.start.Cart;
+import com.kelkoo.agile.start.Client;
+import com.kelkoo.agile.start.Product;
 
 public class TestCart {
 

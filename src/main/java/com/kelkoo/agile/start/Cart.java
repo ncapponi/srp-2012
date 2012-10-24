@@ -1,4 +1,4 @@
-package com.kelkoo.agile.step1.collaborators;
+package com.kelkoo.agile.start;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

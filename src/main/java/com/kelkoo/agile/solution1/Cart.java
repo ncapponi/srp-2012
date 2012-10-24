@@ -1,8 +1,5 @@
 package com.kelkoo.agile.solution1;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -64,4 +61,5 @@ public class Cart implements Serializable {
 		}
 		return ok;
 	}
+}
 

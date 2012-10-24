@@ -1,4 +1,4 @@
-package com.kelkoo.agile.step1.collaborators;
+package com.kelkoo.agile.start;
 
 import java.io.Serializable;
 
@@ -6,11 +6,11 @@ public class Client implements Serializable {
 
     private static final long serialVersionUID = -5349600951564538192L;
 
-    boolean isSolvent() {
+    public boolean isSolvent() {
 		return true;
 	}
 
-	void pay(float totalPrice) {
+	public void pay(float totalPrice) {
 	}
 
 
