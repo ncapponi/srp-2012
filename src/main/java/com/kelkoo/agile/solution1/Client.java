@@ -13,5 +13,9 @@ public class Client implements Serializable {
 	public void pay(float totalPrice) {
 	}
 
+    public int getId() {
+        return 0;
+    }
+
 
 }

@@ -18,11 +18,27 @@ public class Cart implements Serializable {
 	private final Date creationDate;
 	
 	public Cart(Client client, Date creationDate) {
-		this.client = client;
-		this.creationDate = creationDate;
-	}
+    	this.client = client;
+    	this.creationDate = creationDate;
+    }
 
-	public void addProduct(Product prod) {
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public List<Product> getProducts() {
+    	return products;
+    }
+
+    public List<String> getProductsNames() {
+    	List<String> names = new ArrayList<String>();
+    	for (Product product : products) {
+    		names.add(product.getName());
+    	}
+    	return names;
+    }
+
+    public void addProduct(Product prod) {
 		products.add(prod);
 	}
 	
@@ -30,18 +46,6 @@ public class Cart implements Serializable {
 		products.remove(prod);
 	}
 
-	public List<Product> getProducts() {
-		return products;
-	}
-	
-	public List<String> getProductsNames() {
-		List<String> names = new ArrayList<String>();
-		for (Product product : products) {
-			names.add(product.getName());
-		}
-		return names;
-	}
-	
 	public float totalPrice() {
 		int total = 0;
 		for (Product product : products) {
@@ -61,5 +65,9 @@ public class Cart implements Serializable {
 		}
 		return ok;
 	}
+
+    public int getClientId() {
+        return client.getId();
+    }
 }
 

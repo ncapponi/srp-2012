@@ -6,12 +6,14 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Date;
 
 import org.hamcrest.core.Is;
+import org.junit.AfterClass;
 import org.junit.Test;
 
 import com.kelkoo.agile.start.Cart;
@@ -19,6 +21,7 @@ import com.kelkoo.agile.start.Client;
 import com.kelkoo.agile.start.Product;
 
 public class TestCart {
+
 
     @Test
     public void composeMail() throws Exception {
@@ -114,5 +117,13 @@ public class TestCart {
         assertThat(savedCart.getProducts().size(), is(1));
         assertThat(savedCart.getProducts().get(0), is(product));
     }
-
+    
+    @AfterClass
+    public static void tearDown() {
+        File file = new File("cart.ser");
+        if(file.exists()){
+            file.delete();
+        }
+    }
+    
 }

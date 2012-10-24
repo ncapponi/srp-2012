@@ -1,12 +1,9 @@
 package com.kelkoo.agile.solution1;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class CartRepository {
 
@@ -17,18 +14,25 @@ public class CartRepository {
 	}
 	
 	public void save(Cart cart) throws IOException {
-		ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("cart.ser"));
+		serialize(cart);
+		// or
+        persist(cart);
+	}
+
+    private void serialize(Cart cart) throws IOException, FileNotFoundException {
+        ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("cart.ser"));
 		stream.writeObject(cart);
 		stream.close();
+    }
 
-        // or
+    private void persist(Cart cart) {
         database.startTransaction();
         database.doUpdate(getSqlUpdateRequest(cart));
         database.commit();
-	}
+    }
 	
-	public String getSqlUpdateRequest(cart) {
-		return format("insert into carts date=? clientId=? ....", cart.getDate(), cart.getClient().getId());
+	private String getSqlUpdateRequest(Cart cart) {
+		return String.format("insert into carts (%s, %s)", cart.getCreationDate(), cart.getClientId());
 	}
 	
 }
