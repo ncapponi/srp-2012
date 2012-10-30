@@ -1,12 +1,17 @@
 package com.kelkoo.agile.start;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.kelkoo.agile.start.collaborators.Client;
+import com.kelkoo.agile.start.collaborators.Product;
 
 public class Cart implements Serializable {
 
@@ -45,7 +50,7 @@ public class Cart implements Serializable {
 		return names;
 	}
 	
-	public float totalPrice() {
+	public float getTotalPrice() {
 		int total = 0;
 		for (Product product : products) {
 			total += product.getPrice();
@@ -55,8 +60,8 @@ public class Cart implements Serializable {
 	
 	public boolean validate() {
 		boolean ok = true;
-		if (client.isSolvent()) {
-			client.pay(totalPrice());
+		if (client.isSolvent() && !hasPaid) {
+			client.pay(getTotalPrice());
 			hasPaid = true;
 		}
 		else {
@@ -69,6 +74,13 @@ public class Cart implements Serializable {
 		ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("cart.ser"));
 		stream.writeObject(this);
 		stream.close();
+	}
+	
+	public static Cart find(Client client) throws IOException, ClassNotFoundException {
+		ObjectInputStream stream = new ObjectInputStream(new FileInputStream("cart" + client.getId() + ".ser"));
+		Cart cart = (Cart) stream.readObject();
+		stream.close();
+		return cart;
 	}
 	
 	public String getSqlInsertRequest() {

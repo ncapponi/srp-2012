@@ -17,8 +17,8 @@ import org.junit.AfterClass;
 import org.junit.Test;
 
 import com.kelkoo.agile.start.Cart;
-import com.kelkoo.agile.start.Client;
-import com.kelkoo.agile.start.Product;
+import com.kelkoo.agile.start.collaborators.Client;
+import com.kelkoo.agile.start.collaborators.Product;
 
 public class TestCart {
 
@@ -86,7 +86,7 @@ public class TestCart {
         Product product2 = mock(Product.class);
         when(product2.getPrice()).thenReturn(1.0f);
         Cart cart = newCart(product1, product2);
-        assertThat(cart.totalPrice(), is(3.0f));
+        assertThat(cart.getTotalPrice(), is(3.0f));
     }
 
     @Test

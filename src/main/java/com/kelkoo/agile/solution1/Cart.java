@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.kelkoo.agile.solution1.collaborators.Client;
+import com.kelkoo.agile.solution1.collaborators.Product;
+
 public class Cart implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,23 +25,39 @@ public class Cart implements Serializable {
     	this.creationDate = creationDate;
     }
 
-    public Date getCreationDate() {
+    public List<Product> getProducts() {
+		return products;
+	}
+
+	public List<String> getProductsNames() {
+		List<String> names = new ArrayList<String>();
+		for (Product product : products) {
+			names.add(product.getName());
+		}
+		return names;
+	}
+
+	public int getClientId() {
+	    return client.getId();
+	}
+
+	public Date getCreationDate() {
         return creationDate;
     }
+	
+	public boolean isPaid() {
+		return hasPaid;
+	}
 
-    public List<Product> getProducts() {
-    	return products;
-    }
+    public float getTotalPrice() {
+		int total = 0;
+		for (Product product : products) {
+			total += product.getPrice();
+		}
+		return total;
+	}
 
-    public List<String> getProductsNames() {
-    	List<String> names = new ArrayList<String>();
-    	for (Product product : products) {
-    		names.add(product.getName());
-    	}
-    	return names;
-    }
-
-    public void addProduct(Product prod) {
+	public void addProduct(Product prod) {
 		products.add(prod);
 	}
 	
@@ -46,28 +65,8 @@ public class Cart implements Serializable {
 		products.remove(prod);
 	}
 
-	public float totalPrice() {
-		int total = 0;
-		for (Product product : products) {
-			total += product.getPrice();
-		}
-		return total;
+	public void clientHasPaid() {
+		this.hasPaid = true;
 	}
-	
-	public boolean validate() {
-		boolean ok = true;
-		if (client.isSolvent()) {
-			client.pay(totalPrice());
-			hasPaid = true;
-		}
-		else {
-			ok = false;
-		}
-		return ok;
-	}
-
-    public int getClientId() {
-        return client.getId();
-    }
 }
 

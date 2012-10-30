@@ -1,9 +1,14 @@
 package com.kelkoo.agile.solution1;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import com.kelkoo.agile.solution1.collaborators.Client;
+import com.kelkoo.agile.solution1.collaborators.Database;
 
 public class CartRepository {
 
@@ -15,8 +20,15 @@ public class CartRepository {
 	
 	public void save(Cart cart) throws IOException {
 		serialize(cart);
-		// or
-        persist(cart);
+		// or 
+	    // persist(cart);
+	}
+	
+	public Cart find(Client client) throws Exception {
+		ObjectInputStream stream = new ObjectInputStream(new FileInputStream("cart" + client.getId() + ".ser"));
+		Cart cart = (Cart) stream.readObject();
+		stream.close();
+		return cart;
 	}
 
     private void serialize(Cart cart) throws IOException, FileNotFoundException {

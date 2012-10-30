@@ -1,4 +1,4 @@
-package com.kelkoo.agile.start;
+package com.kelkoo.agile.solution1.collaborators;
 
 import java.io.Serializable;
 
@@ -8,9 +8,9 @@ public class Product implements Serializable {
     private final String name;
     private final float price;
 
-    public Product(String name, float prix) {
+    public Product(String name, float price) {
         this.name = name;
-        this.price = prix;
+        this.price = price;
     }
 
     public float getPrice() {

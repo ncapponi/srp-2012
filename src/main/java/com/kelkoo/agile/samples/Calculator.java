@@ -1,4 +1,4 @@
-package com.kelkoo.agile.step2;
+package com.kelkoo.agile.samples;
 
 import java.io.PrintStream;
 

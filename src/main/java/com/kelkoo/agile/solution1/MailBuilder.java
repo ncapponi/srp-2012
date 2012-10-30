@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.kelkoo.agile.solution1.collaborators.Product;
+
 public class MailBuilder {
 
  
-	public MailBuilder() {
-	}
+	public MailBuilder() {}
 	
 	public String getMailContent(Cart cart) {
 		 StringBuilder content = new StringBuilder("Bonjour,\n");

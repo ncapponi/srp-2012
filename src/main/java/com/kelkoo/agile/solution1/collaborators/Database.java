@@ -1,4 +1,4 @@
-package com.kelkoo.agile.solution1;
+package com.kelkoo.agile.solution1.collaborators;
 
 public interface Database {
 

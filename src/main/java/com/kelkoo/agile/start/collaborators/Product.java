@@ -1,10 +1,11 @@
-package com.kelkoo.agile.solution1;
+package com.kelkoo.agile.start.collaborators;
 
 import java.io.Serializable;
 
 public class Product implements Serializable {
 
     private static final long serialVersionUID = -440117090747421807L;
+    
     private final String name;
     private final float price;
 

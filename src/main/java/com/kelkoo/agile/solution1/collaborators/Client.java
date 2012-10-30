@@ -1,4 +1,4 @@
-package com.kelkoo.agile.start;
+package com.kelkoo.agile.solution1.collaborators;
 
 import java.io.Serializable;
 
@@ -12,6 +12,10 @@ public class Client implements Serializable {
 
 	public void pay(float totalPrice) {
 	}
+
+    public int getId() {
+        return 0;
+    }
 
 
 }
