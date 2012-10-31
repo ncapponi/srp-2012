@@ -21,8 +21,7 @@ public class BusinessService {
 	
 	public void sendMailTo(Client client) throws Exception {
 		Cart cart = getCartForClient(client);
-		cart.accept(mailBuilder);
-		String content = mailBuilder.getMailContent();
+		String content = mailBuilder.getMailContent(cart);
 		// mailer.sentMailTo(Client client, content);
 	}
 	

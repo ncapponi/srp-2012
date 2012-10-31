@@ -6,10 +6,10 @@ public class MailBuilder implements CartVisitor {
 
 	private StringBuilder cartContent;
 	private StringBuilder productsContent;
-	private String mailContent = "";
 	
-	public String getMailContent() {
-		return mailContent;
+	public String getMailContent(Cart cart) {
+		cart.accept(this);
+		return cartContent.append(productsContent).toString();
 	}
 
 	public void beforeVisit() {
@@ -18,7 +18,7 @@ public class MailBuilder implements CartVisitor {
 	}
 	
 	public void afterVisit() {
-		mailContent = cartContent.append(productsContent).toString(); 
+		// nothing to do
 	}
 	
 	public void visit(Cart cart) {
