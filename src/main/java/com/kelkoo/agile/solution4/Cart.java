@@ -1,17 +1,13 @@
 package com.kelkoo.agile.solution4;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.kelkoo.agile.start.collaborators.Client;
-import com.kelkoo.agile.start.collaborators.Product;
+import com.kelkoo.agile.solution4.collaborators.Client;
+import com.kelkoo.agile.solution4.collaborators.Product;
+
 
 public class Cart implements Serializable {
 
@@ -38,6 +34,10 @@ public class Cart implements Serializable {
 		products.remove(prod);
 	}
 
+	public int getClientId() {
+	  return client.getId();
+	}
+
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -50,6 +50,10 @@ public class Cart implements Serializable {
 		return names;
 	}
 	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
 	public float getTotalPrice() {
 		int total = 0;
 		for (Product product : products) {
@@ -58,43 +62,15 @@ public class Cart implements Serializable {
 		return total;
 	}
 	
-	public boolean validate() {
-		boolean ok = true;
-		if (client.isSolvent() && !hasPaid) {
-			client.pay(getTotalPrice());
-			hasPaid = true;
+	public void accept(CartVisitor visitor) {
+		visitor.beforeVisit();
+		for (Product product : products) {
+			product.accept(visitor);
 		}
-		else {
-			ok = false;
-		}
-		return ok;
+		visitor.visit(this);
+		visitor.afterVisit();
 	}
 	
-	public void save() throws IOException {
-		ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("cart.ser"));
-		stream.writeObject(this);
-		stream.close();
-	}
 	
-	public static Cart find(Client client) throws IOException, ClassNotFoundException {
-		ObjectInputStream stream = new ObjectInputStream(new FileInputStream("cart" + client.getId() + ".ser"));
-		Cart cart = (Cart) stream.readObject();
-		stream.close();
-		return cart;
-	}
-	
-	public String getSqlInsertRequest() {
-		return "insert into carts date=? clientId=? ....";
-	}
-	
-	public String computeMailContent() {
-		 String content = "Bonjour,\nVotre panier composé le " + creationDate
-		   + " comporte les éléments suivants :\n";
-		 for (Product product : products) {
-		  content += "- " + product.getName() + " au prix de "
-		    + product.getPrice() + "\n";
-		 }
-		 return content;
-		}
 	
 }

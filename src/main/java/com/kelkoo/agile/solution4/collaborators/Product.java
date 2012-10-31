@@ -2,6 +2,8 @@ package com.kelkoo.agile.solution4.collaborators;
 
 import java.io.Serializable;
 
+import com.kelkoo.agile.solution4.CartVisitor;
+
 public class Product implements Serializable {
 
     private static final long serialVersionUID = -440117090747421807L;
@@ -49,5 +51,10 @@ public class Product implements Serializable {
             return false;
         return true;
     }
+
+	public void accept(CartVisitor visitor) {
+		visitor.visit(this);
+		// OR : visitor.visit(name, price)
+	}
 
 }
