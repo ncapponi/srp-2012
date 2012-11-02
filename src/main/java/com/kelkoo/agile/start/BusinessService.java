@@ -31,4 +31,11 @@ public class BusinessService {
 	
 	// other services
     // ...
+	
+    private static class MailService {
+
+        static void sentMailTo(Client client, String mailContent) {
+            // Call mail server here
+        }
+    }
 }

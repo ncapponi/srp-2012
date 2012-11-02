@@ -6,7 +6,7 @@ import com.kelkoo.agile.solution1.collaborators.Product;
 
 public class BusinessService {
 
-	private CartRepository cartRepository;
+    private CartRepository cartRepository;
 	private MailBuilder mailBuilder;
 	private Payment payment;
 	
@@ -30,7 +30,7 @@ public class BusinessService {
 	public void sendMailTo(Client client) throws Exception {
 		Cart cart = getCartForClient(client);
 		String mailContent = mailBuilder.getMailContent(cart);
-		// mailer.sentMailTo(Client client, content);
+		MailService.sentMailTo(client, mailContent);
 	}
 	
 	public void pay(Client client) throws Exception {
@@ -40,4 +40,11 @@ public class BusinessService {
 	
 	// other services
 	// ...
+
+	private static class MailService {
+	    
+	    static void sentMailTo(Client client, String mailContent) {
+	       //Call mail server here
+	    }
+	}
 }
