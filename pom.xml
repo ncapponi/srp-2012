@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.kelkoo</groupId>
-	<artifactId>productivity</artifactId>
+	<artifactId>agile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>productivity</name>
-	<url>http://maven.apache.org</url>
+	<name>srp-2012</name>
+	<url>https://github.com/ncapponi/srp-2012.git</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -66,4 +66,12 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<organization>
+		<name>Kelkoo</name>
+		<url>www.kelkoo.co.uk</url>
+	</organization>
+	<scm>
+		<url>https://github.com/ncapponi/srp-2012.git</url>
+	</scm>
+	<description>Code utilisé pour la présentation Well-crafted software: un code maintenable avec le &quot;principe de responsabilité unique&quot; à Agile Grenoble 2012</description>
 </project>

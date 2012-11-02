@@ -1,4 +1,4 @@
-package com.kelkoo.agile.step1.start;
+package com.kelkoo.agile.start;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.is;
@@ -24,7 +24,7 @@ public class TestCart {
 
 
     @Test
-    public void composeMail() throws Exception {
+    public void computeMailContent() throws Exception {
         Client client = mock(Client.class);
         Date creationDate = mock(Date.class);
         when(creationDate.toString()).thenReturn("20121008");
