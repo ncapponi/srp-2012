@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -25,9 +26,13 @@ public class TestCartRepository {
 
     @AfterClass
     public static void tearDown() {
-        File file = new File("cart.ser");
-        if (file.exists()) {
-            file.delete();
+        File directory = new File(".");
+        FilenameFilter filter = cartFilterName();
+        for (String fileToDelete : directory.list(filter)) {
+            File file = new File(fileToDelete);
+            if (file.exists()) {
+                file.delete();
+            }
         }
     }
 
@@ -80,5 +85,15 @@ public class TestCartRepository {
         cart.addProduct(product);
         return cart;
     }
-
+    
+    private static FilenameFilter cartFilterName() {
+        FilenameFilter filter = new FilenameFilter() {
+            
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.startsWith("cart") && name.endsWith(".ser");
+            }
+        };
+        return filter;
+    }
 }
