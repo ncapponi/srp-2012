@@ -4,7 +4,7 @@ import com.kelkoo.agile.solution4.Cart;
 import com.kelkoo.agile.solution4.collaborators.Client;
 import com.kelkoo.agile.solution4.collaborators.Product;
 
-public class BusinessService {
+public class Application {
 
 	private MailBuilder mailBuilder;
 	private CartRepository cartRepository;

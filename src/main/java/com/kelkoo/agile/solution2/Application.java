@@ -3,7 +3,7 @@ package com.kelkoo.agile.solution2;
 import com.kelkoo.agile.solution2.collaborators.Client;
 import com.kelkoo.agile.solution2.collaborators.Product;
 
-public class BusinessService {
+public class Application {
 
     private CartRepository repository;
 

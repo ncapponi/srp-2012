@@ -4,13 +4,13 @@ import com.kelkoo.agile.solution1.collaborators.Client;
 import com.kelkoo.agile.solution1.collaborators.Product;
 
 
-public class BusinessService {
+public class Application {
 
     private CartRepository cartRepository;
 	private MailBuilder mailBuilder;
 	private Payment payment;
 	
-	public BusinessService(CartRepository cartRepository,
+	public Application(CartRepository cartRepository,
 			MailBuilder mailBuilder, Payment payment) {
 		this.cartRepository = cartRepository;
 		this.mailBuilder = mailBuilder;

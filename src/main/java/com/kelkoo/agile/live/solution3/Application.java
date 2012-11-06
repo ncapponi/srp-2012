@@ -1,11 +1,9 @@
-package com.kelkoo.agile.start;
+package com.kelkoo.agile.live.solution3;
 
+import com.kelkoo.agile.live.solution3.collaborators.Product;
+import com.kelkoo.agile.solution3.collaborators.Client;
 
-import com.kelkoo.agile.start.collaborators.Client;
-import com.kelkoo.agile.start.collaborators.Product;
-
-
-public class BusinessService {
+public class Application {
 
 	public Cart getCartForClient(Client client) throws Exception {
 		Cart cart = Cart.find(client);

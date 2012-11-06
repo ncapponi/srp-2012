@@ -1,4 +1,4 @@
-package com.kelkoo.agile.start;
+package com.kelkoo.agile.live.solution4;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.kelkoo.agile.start.collaborators.Client;
-import com.kelkoo.agile.start.collaborators.Product;
+import com.kelkoo.agile.live.solution4.collaborators.Client;
+import com.kelkoo.agile.live.solution4.collaborators.Product;
+
 
 public class Cart implements Serializable {
 

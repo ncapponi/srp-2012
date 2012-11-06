@@ -5,7 +5,7 @@ import com.kelkoo.agile.solution3.collaborators.Client;
 import com.kelkoo.agile.solution3.collaborators.Product;
 
 
-public class BusinessService {
+public class Application {
 	
 	CartFactory factory;
 	
