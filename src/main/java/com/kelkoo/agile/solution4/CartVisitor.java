@@ -1,12 +1,17 @@
 package com.kelkoo.agile.solution4;
 
-import com.kelkoo.agile.solution4.collaborators.Product;
+import java.util.Date;
 
 public interface CartVisitor {
 
-	void visit(Cart cart); // alternative : decompose to fields => visit(Date creationDate, Client client)
+	void visitCart(Date creationDate, String clientId);
 
-	void visit(Product product); // alternative : decompose to fields => visit(String name, float price);
+	void visitProduct(String name, float price);
+	
+	
+	
+	
+	// additional methods to be able to detect start and end of visit
 
 	void afterVisit();
 

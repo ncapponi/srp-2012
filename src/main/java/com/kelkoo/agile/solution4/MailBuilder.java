@@ -1,6 +1,6 @@
 package com.kelkoo.agile.solution4;
 
-import com.kelkoo.agile.solution4.collaborators.Product;
+import java.util.Date;
 
 public class MailBuilder implements CartVisitor {
 
@@ -21,26 +21,26 @@ public class MailBuilder implements CartVisitor {
 		// nothing to do
 	}
 	
-	public void visit(Cart cart) {
-		buildMailHeader(cart);
+	public void visitCart(Date creationDate, String clientId) {
+		buildMailHeader(creationDate);
 	}
 
-	public void visit(Product product) {
-		addProductToMail(product);
+	public void visitProduct(String name, float price) {
+		addProductToMail(name, price);
 	}
 
-	private void buildMailHeader(Cart cart) {
+	private void buildMailHeader(Date creationDate) {
 		cartContent.append("Bonjour,\n")
 		       .append("Votre panier composé le ")
-			   .append(cart.getCreationDate())
+			   .append(creationDate)
 			   .append(" comporte les éléments suivants :\n");
 	}
 
-	private void addProductToMail(Product product) {
+	private void addProductToMail(String name, float price) {
 		productsContent.append("- ")
-			.append(product.getName())
+			.append(name)
 			.append(" au prix de ")
-			.append(product.getPrice()).append("\n");
+			.append(price).append("\n");
 	}
 
 }

@@ -53,8 +53,7 @@ public class Product implements Serializable {
     }
 
 	public void accept(CartVisitor visitor) {
-		visitor.visit(this);
-		// OR : visitor.visit(name, price)
+		visitor.visitProduct(name, price);
 	}
 
 }

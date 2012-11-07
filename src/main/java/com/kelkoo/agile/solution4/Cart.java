@@ -67,7 +67,7 @@ public class Cart implements Serializable {
 		for (Product product : products) {
 			product.accept(visitor);
 		}
-		visitor.visit(this);
+		visitor.visitCart(null, null);
 		visitor.afterVisit();
 	}
 	
